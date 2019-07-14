@@ -76,9 +76,10 @@ const ToDoList = () => {
               onClick={() => setShowActTodos(!showActTodos)}
               marginRight='30px'
             >
-              {showActTodos ? <ArrowDown /> : <ArrowUp />}
+              {showActTodos && todos.length > 0 ? <ArrowDown /> : <ArrowUp />}
             </Box>
           </Box>
+
           {showActTodos &&
             todos.map(todo => (
               <Todos

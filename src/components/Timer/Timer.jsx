@@ -35,9 +35,9 @@ const Timer = () => {
           alignItems='center'
           border='8px solid black'
         >
-          <Box color='white' fontSize='50px' margin='10px'>
+          <PlayButton color='white' fontSize='50px' margin='10px'>
             <i className='fas fa-play' />
-          </Box>
+          </PlayButton>
         </BgOrange>
       </BgRed>
 
@@ -75,6 +75,12 @@ const BgRed = styled(Box)`
 
 const BgOrange = styled(Box)`
   background: ${props => props.theme.colors.orange};
+`;
+
+const PlayButton = styled(Box)`
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default Timer;
