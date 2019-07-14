@@ -1,10 +1,20 @@
 import React from 'react';
+import { StylesProvider } from '@material-ui/styles';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './theme/globalStyle';
+import StyledComponentsButton from './StyledComponentsButton';
+import theme from './theme/theme';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>132</header>
-    </div>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
+          <StyledComponentsButton />
+        </>
+      </ThemeProvider>
+    </StylesProvider>
   );
 }
 
