@@ -7,9 +7,9 @@ const globalRules = `
     box-sizing: border-box;
     font-family: ${theme.fonts.main};
     color: ${theme.colors.text};
-    background-color: #F0F8FF;
-    font-weight: 500;
-    font-size: 16px;
+    background-color:${theme.colors.white};
+    font-weight: 400;
+    font-size: 20px;
   }
 
   body{
@@ -20,9 +20,9 @@ const globalRules = `
     text-decoration: none;
     color: inherit;
   }
-  button:focus{ 
+  button :focus{ 
     outline: none;
-  }  
+  }   
 `;
 
 const GlobalStyle = createGlobalStyle`${normalize} ${globalRules}`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import icon from '../../image/pomodoro.svg';
+import icon from '../../asset/pomodoro.svg';
 
 const Timer = () => {
   return (
@@ -13,7 +13,7 @@ const Timer = () => {
       justifyContent='center'
       alignItems='center'
     >
-      <Box position='fixed' top='200px' left='215px'>
+      <Box position='fixed' top='200px' left='200px'>
         <img src={icon} alt='icon' />
       </Box>
 
