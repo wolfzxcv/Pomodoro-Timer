@@ -23,7 +23,6 @@ const ToDoList = () => {
       display='flex'
       justifyContent='space-around'
       alignItems='flex-start'
-      border='1px solid red'
     >
       <StyledTodoList
         width='47vw'
@@ -58,7 +57,7 @@ const ToDoList = () => {
           width='45vw'
           display='flex'
           flexDirection='column'
-          border='1px solid red'
+          // border='1px solid red'
         >
           <Box
             width='45vw'
@@ -72,10 +71,13 @@ const ToDoList = () => {
             <Box marginLeft='30px' fontSize='26px'>
               To-Do
             </Box>
-            <ArrowDown
+
+            <Box
               onClick={() => setShowActTodos(!showActTodos)}
               marginRight='30px'
-            />
+            >
+              {showActTodos ? <ArrowDown /> : <ArrowUp />}
+            </Box>
           </Box>
           {showActTodos &&
             todos.map(todo => (
@@ -129,6 +131,17 @@ const ArrowDown = styled(Box)`
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid ${props => props.theme.colors.white};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ArrowUp = styled(Box)`
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid ${props => props.theme.colors.white};
   &:hover {
     cursor: pointer;
   }
