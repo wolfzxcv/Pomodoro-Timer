@@ -12,7 +12,7 @@ const AppBar = () => {
       justifyContent='space-around'
       alignItems='center'
     >
-      <Link to='/'>
+      <Link to='/Pomodoro-Timer/'>
         <StyledBox
           fontSize='24px'
           fontWeight='bold'
@@ -25,7 +25,7 @@ const AppBar = () => {
           <Box>TO DO LIST</Box>
         </StyledBox>
       </Link>
-      <Link to='/analytics'>
+      <Link to='/Pomodoro-Timer/analytics'>
         <StyledBox
           fontSize='24px'
           fontWeight='bold'
@@ -38,7 +38,7 @@ const AppBar = () => {
           <Box>ANALYTICS</Box>
         </StyledBox>
       </Link>
-      <Link to='/ringtones'>
+      <Link to='/Pomodoro-Timer/ringtones'>
         <StyledBox
           fontSize='24px'
           fontWeight='bold'
