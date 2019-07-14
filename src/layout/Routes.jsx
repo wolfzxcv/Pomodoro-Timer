@@ -11,7 +11,13 @@ const ToDoList = lazy(() => import('../components/ToDoList/ToDoList'));
 const Routes = () => (
   <Suspense fallback={<Loading />}>
     <Router>
-      <Box width='48vw' height='100vh' display='flex' flexDirection='column'>
+      <Box
+        width='57vw'
+        height='100vh'
+        display='flex'
+        flexDirection='column'
+        border='1px solid red'
+      >
         <AppBar />
         <Switch>
           <Route exact path='/Pomodoro-Timer/' component={ToDoList} />

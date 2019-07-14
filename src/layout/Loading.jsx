@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 const Loading = () => {
   return (
     <Box
-      width='97vw'
+      width='100vw'
       height='100vh'
       position='absolute'
       top='0'
@@ -13,13 +13,16 @@ const Loading = () => {
       zIndex='modal'
     >
       <Box
-        width='97vw'
+        width='100w'
         height='100vh'
         display='flex'
         justifyContent='center'
         alignItems='center'
       >
-        <Rotate>*</Rotate>
+        <Rotate>
+          <i className='fas fa-spinner' />
+        </Rotate>
+
         <Box fontSize='30px'>Now Loading...</Box>
       </Box>
     </Box>
@@ -39,10 +42,9 @@ const rotate = keyframes`
 const Rotate = styled.div`
   width: 50px;
   height: 50px;
-  font-weight: 700;
-  animation: ${rotate} 0.5s linear infinite;
-  padding: 2rem 1rem;
-  font-size: 1.5rem;
+  animation: ${rotate} 0.8s linear infinite;
+  padding: 1rem;
+  font-size: 50px;
 `;
 
 export default Loading;

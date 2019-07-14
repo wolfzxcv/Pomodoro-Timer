@@ -13,7 +13,7 @@ const App = () => {
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <ContextProvider>
-          <Box width='97vw' height='100vh' display='flex'>
+          <Box width='100vw' height='100vh' display='flex'>
             <GlobalStyle />
             <Timer />
             <Routes />
