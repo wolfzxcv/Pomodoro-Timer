@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "react/jsx-filename-extension": [0],
+    "no-console": 0,
+    "import/no-named-as-default": 0
+  },
+  "plugins": ["react", "import"],
+  "parser": "babel-eslint"
+}

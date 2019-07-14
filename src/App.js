@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { StylesProvider } from '@material-ui/styles';
+import { ThemeProvider } from 'styled-components';
+import Box from '@material-ui/core/Box';
+import GlobalStyle from './theme/globalStyle';
+import ContextProvider from './context/ContextProvider';
+import theme from './theme/theme';
+import Timer from './components/Timer/Timer';
+import Routes from './layout/Routes';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <ContextProvider>
+          <Box width='97vw' height='100vh' display='flex'>
+            <GlobalStyle />
+            <Timer />
+            <Routes />
+          </Box>
+        </ContextProvider>
+      </ThemeProvider>
+    </StylesProvider>
   );
-}
+};
 
 export default App;
