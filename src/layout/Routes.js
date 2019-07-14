@@ -14,9 +14,9 @@ const Routes = () => (
       <Box width='48vw' height='100vh' display='flex' flexDirection='column'>
         <AppBar />
         <Switch>
-          <Route exact path='/' component={ToDoList} />
-          <Route path='/analytics' component={Analytics} />
-          <Route path='/ringtones' component={Ringtones} />
+          <Route exact path='/Pomodoro-Timer/' component={ToDoList} />
+          <Route path='/Pomodoro-Timer/analytics' component={Analytics} />
+          <Route path='/Pomodoro-Timer/ringtones' component={Ringtones} />
         </Switch>
       </Box>
     </Router>
