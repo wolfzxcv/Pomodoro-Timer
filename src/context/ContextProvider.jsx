@@ -8,6 +8,7 @@ export default props => {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [showActTodos, setShowActTodos] = useState(false);
 
   const addTodo = e => {
     e.preventDefault();
@@ -28,6 +29,9 @@ export default props => {
     setIsError,
     todos,
     setTodos,
+    showActTodos,
+    setShowActTodos,
+
     addTodo,
   };
 

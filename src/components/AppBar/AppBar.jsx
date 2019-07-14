@@ -65,8 +65,8 @@ const AppBar = () => {
 
 const StyledBox = styled(Box)`
   &:hover {
-    color: #f44336;
-    border-bottom: 3px solid #f44336;
+    color: ${props => props.theme.colors.orange};
+    border-bottom: 3px solid ${props => props.theme.colors.orange};
   }
 `;
 

@@ -6,11 +6,15 @@ import Todos from './Todos';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const ToDoList = () => {
-  const { input, setInput, isError, todos, addTodo } = useContext(
-    ContextProvider
-  );
-  console.log('input', input);
-  console.log('todos', todos);
+  const {
+    input,
+    setInput,
+    isError,
+    todos,
+    addTodo,
+    showActTodos,
+    setShowActTodos,
+  } = useContext(ContextProvider);
 
   return (
     <Box
@@ -28,12 +32,7 @@ const ToDoList = () => {
         justifyContent='center'
       >
         <form onSubmit={addTodo}>
-          <Box
-            width='45vw'
-            display='flex'
-            // eslint-disable-next-line
-            border='1px solid #6A6868'
-          >
+          <BorderColor width='45vw' display='flex'>
             <InputBase
               fullWidth
               placeholder='ADD NEW MISSON...'
@@ -46,23 +45,47 @@ const ToDoList = () => {
               justifyContent='center'
               alignItems='center'
               fontSize='48px'
+              onClick={addTodo}
             >
               +
             </Box>
-          </Box>
+          </BorderColor>
         </form>
-        <Box height='2rem' color='#f44336'>
+        <TextColor height='2rem'>
           {isError && 'please enter more than 3 characters'}
-        </Box>
-        <Box>
-          {todos.map(todo => (
-            <Todos
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              completed={todo.completed}
+        </TextColor>
+        <Box
+          width='45vw'
+          display='flex'
+          flexDirection='column'
+          border='1px solid red'
+        >
+          <Box
+            width='45vw'
+            height='35px'
+            bgcolor='black'
+            color='white'
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <Box marginLeft='30px' fontSize='26px'>
+              To-Do
+            </Box>
+            <ArrowDown
+              onClick={() => setShowActTodos(!showActTodos)}
+              marginRight='30px'
             />
-          ))}
+          </Box>
+          {showActTodos &&
+            todos.map(todo => (
+              <Todos
+                key={todo.id}
+                id={todo.id}
+                title={todo.title}
+                completed={todo.completed}
+              />
+            ))}
         </Box>
       </StyledTodoList>
     </Box>
@@ -71,14 +94,14 @@ const ToDoList = () => {
 
 const StyledTodoList = styled(Box)`
   form {
-    color: #f44336;
+    color: ${props => props.theme.colors.orange};
 
     input {
       padding-left: 20px;
       font-size: 30px;
       height: 60px;
       ::placeholder {
-        color: #f44336;
+        color: ${props => props.theme.colors.orange};
         opacity: 1;
       }
     }
@@ -89,6 +112,25 @@ const StyledTodoList = styled(Box)`
         background-color: rgba(0, 0, 0, 0.1);
       }
     }
+  }
+`;
+
+const TextColor = styled(Box)`
+  color: ${props => props.theme.colors.orange};
+`;
+
+const BorderColor = styled(Box)`
+  border: 1px solid ${props => props.theme.colors.gray};
+`;
+
+const ArrowDown = styled(Box)`
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid ${props => props.theme.colors.white};
+  &:hover {
+    cursor: pointer;
   }
 `;
 

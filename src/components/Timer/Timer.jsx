@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
 
@@ -17,30 +18,28 @@ const Timer = () => {
         <img src={icon} alt='icon' />
       </Box>
 
-      <Box
+      <BgRed
         width='220px'
         height='220px'
         borderRadius='50%'
-        bgcolor='#BA000D'
         display='flex'
         justifyContent='center'
         alignItems='center'
       >
-        <Box
+        <BgOrange
           width='192px'
           height='192px'
           borderRadius='50%'
-          bgcolor='#F44336'
           display='flex'
           justifyContent='center'
           alignItems='center'
           border='8px solid black'
         >
-          <Box color='#FFFFFF' fontSize='50px' margin='10px'>
+          <Box color='white' fontSize='50px' margin='10px'>
             <i className='fas fa-play' />
           </Box>
-        </Box>
-      </Box>
+        </BgOrange>
+      </BgRed>
 
       <Box
         marginTop='20px'
@@ -48,7 +47,7 @@ const Timer = () => {
         height='90px'
         fontWeight='bold'
         fontSize='90px'
-        color='#FFFFFF'
+        color='white'
         display='flex'
         justifyContent='center'
         alignItems='center'
@@ -59,7 +58,7 @@ const Timer = () => {
         marginTop='20px'
         width='304px'
         fontSize='30px'
-        color='#FFFFFF'
+        color='white'
         display='flex'
         justifyContent='center'
         alignItems='center'
@@ -69,5 +68,13 @@ const Timer = () => {
     </Box>
   );
 };
+
+const BgRed = styled(Box)`
+  background: ${props => props.theme.colors.red};
+`;
+
+const BgOrange = styled(Box)`
+  background: ${props => props.theme.colors.orange};
+`;
 
 export default Timer;

@@ -6,7 +6,7 @@ const globalRules = `
   html {
     box-sizing: border-box;
     font-family: ${theme.fonts.main};
-    color: ${theme.colors.text};
+    color: ${theme.colors.black};
     background-color:${theme.colors.white};
     font-weight: 400;
     font-size: 20px;
