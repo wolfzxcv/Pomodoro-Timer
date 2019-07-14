@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/Pomodoro-Timer/static/js/main.214059cb.chunk.js",
+    "main.js.map": "/Pomodoro-Timer/static/js/main.214059cb.chunk.js.map",
+    "runtime~main.js": "/Pomodoro-Timer/static/js/runtime~main.b3045610.js",
+    "runtime~main.js.map": "/Pomodoro-Timer/static/js/runtime~main.b3045610.js.map",
+    "static/js/2.c5a5bd37.chunk.js": "/Pomodoro-Timer/static/js/2.c5a5bd37.chunk.js",
+    "static/js/2.c5a5bd37.chunk.js.map": "/Pomodoro-Timer/static/js/2.c5a5bd37.chunk.js.map",
+    "static/js/3.d3b57296.chunk.js": "/Pomodoro-Timer/static/js/3.d3b57296.chunk.js",
+    "static/js/3.d3b57296.chunk.js.map": "/Pomodoro-Timer/static/js/3.d3b57296.chunk.js.map",
+    "static/js/4.ef7140f5.chunk.js": "/Pomodoro-Timer/static/js/4.ef7140f5.chunk.js",
+    "static/js/4.ef7140f5.chunk.js.map": "/Pomodoro-Timer/static/js/4.ef7140f5.chunk.js.map",
+    "static/js/5.807d241b.chunk.js": "/Pomodoro-Timer/static/js/5.807d241b.chunk.js",
+    "static/js/5.807d241b.chunk.js.map": "/Pomodoro-Timer/static/js/5.807d241b.chunk.js.map",
+    "static/js/6.214041a1.chunk.js": "/Pomodoro-Timer/static/js/6.214041a1.chunk.js",
+    "static/js/6.214041a1.chunk.js.map": "/Pomodoro-Timer/static/js/6.214041a1.chunk.js.map",
+    "index.html": "/Pomodoro-Timer/index.html",
+    "precache-manifest.4edae2bbfd28a4359157c0c3b74138e8.js": "/Pomodoro-Timer/precache-manifest.4edae2bbfd28a4359157c0c3b74138e8.js",
+    "service-worker.js": "/Pomodoro-Timer/service-worker.js",
+    "static/media/pomodoro.svg": "/Pomodoro-Timer/static/media/pomodoro.a11bce7d.svg"
+  }
+}
