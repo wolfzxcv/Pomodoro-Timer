@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
+import { ContextProvider } from '../../context/ContextProvider';
 
 const Todos = ({ id, title, completed }) => {
+  const { toggleCompleted } = useContext(ContextProvider);
+
   return (
     <StyledTodos
       width='45vw'
@@ -14,10 +17,14 @@ const Todos = ({ id, title, completed }) => {
       alignItems='center'
     >
       <Box paddingLeft='20px'>
-        <Box marginRight='20px'>
-          <i className='far fa-circle' />
+        <Box marginRight='20px' onClick={() => toggleCompleted(id)}>
+          {completed ? (
+            <i className='far fa-check-circle' />
+          ) : (
+            <i className='far fa-circle' />
+          )}
         </Box>
-        {title}
+        {completed ? <LineThrough>{title}</LineThrough> : <Box>{title}</Box>}
       </Box>
       <Box paddingRight='30px' fontSize='28px'>
         <i className='far fa-play-circle' />
@@ -42,6 +49,10 @@ const StyledTodos = styled(Box)`
       cursor: pointer;
     }
   }
+`;
+
+const LineThrough = styled(Box)`
+  text-decoration: line-through;
 `;
 
 export default Todos;

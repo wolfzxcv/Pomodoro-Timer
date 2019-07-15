@@ -9,6 +9,7 @@ export default props => {
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
   const [showActTodos, setShowActTodos] = useState(true);
+  const [showComTodos, setShowComTodos] = useState(true);
 
   const addTodo = e => {
     e.preventDefault();
@@ -22,6 +23,16 @@ export default props => {
     }
   };
 
+  const toggleCompleted = id => {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updateTodos);
+  };
+
   const value = {
     input,
     setInput,
@@ -31,8 +42,11 @@ export default props => {
     setTodos,
     showActTodos,
     setShowActTodos,
+    showComTodos,
+    setShowComTodos,
 
     addTodo,
+    toggleCompleted,
   };
 
   return <ContextProvider.Provider value={value} {...props} />;

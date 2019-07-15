@@ -14,7 +14,11 @@ const ToDoList = () => {
     addTodo,
     showActTodos,
     setShowActTodos,
+    showComTodos,
+    setShowComTodos,
   } = useContext(ContextProvider);
+
+  console.log(todos);
 
   return (
     <Box
@@ -68,7 +72,7 @@ const ToDoList = () => {
             justifyContent='space-between'
             alignItems='center'
           >
-            <Box marginLeft='30px' fontSize='26px'>
+            <Box marginLeft='30px' fontSize='28px'>
               To-Do
             </Box>
 
@@ -76,19 +80,64 @@ const ToDoList = () => {
               onClick={() => setShowActTodos(!showActTodos)}
               marginRight='30px'
             >
-              {showActTodos && todos.length > 0 ? <ArrowDown /> : <ArrowUp />}
+              {showActTodos &&
+              todos.filter(todo => todo.completed === false).length > 0 ? (
+                <ArrowDown />
+              ) : (
+                <ArrowUp />
+              )}
             </Box>
           </Box>
 
           {showActTodos &&
-            todos.map(todo => (
-              <Todos
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                completed={todo.completed}
-              />
-            ))}
+            todos
+              .filter(todo => todo.completed === false)
+              .map(todo => (
+                <Todos
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  completed={todo.completed}
+                />
+              ))}
+
+          <Box
+            marginTop='30px'
+            width='45vw'
+            height='35px'
+            bgcolor='black'
+            color='white'
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <Box marginLeft='30px' fontSize='26px'>
+              DONE
+            </Box>
+            <Box
+              onClick={() => setShowComTodos(!showComTodos)}
+              marginRight='30px'
+            >
+              {showComTodos &&
+              todos.filter(todo => todo.completed === true).length > 0 ? (
+                <ArrowDown />
+              ) : (
+                <ArrowUp />
+              )}
+            </Box>
+          </Box>
+
+          {showComTodos &&
+            todos
+              .filter(todo => todo.completed === true)
+              .map(todo => (
+                <Todos
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  completed={todo.completed}
+                />
+              ))}
         </Box>
       </StyledTodoList>
     </Box>
