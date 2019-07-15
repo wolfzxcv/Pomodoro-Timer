@@ -7,17 +7,21 @@ import { ContextProvider } from '../../context/ContextProvider';
 const Timer = () => {
   const { isPlay, setIsPlay, playTodo } = useContext(ContextProvider);
 
-  const init = 1500;
+  let init;
+  init = 300;
   const [time, setTime] = useState(init);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(time => time - 1);
-    }, 1000);
+    let id;
+    if (isPlay) {
+      id = setInterval(() => {
+        setTime(time => time - 1);
+      }, 1000);
+    }
     return () => {
-      clearInterval(interval);
+      if (id) clearInterval(id);
     };
-  }, []);
+  }, [isPlay]);
 
   const format = time => {
     let seconds = time % 60;
