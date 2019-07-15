@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
@@ -6,6 +6,27 @@ import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
   const { isPlay, setIsPlay, playTodo } = useContext(ContextProvider);
+
+  const init = 1500;
+  const [time, setTime] = useState(init);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(time => time - 1);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const format = time => {
+    let seconds = time % 60;
+    let minutes = Math.floor(time / 60);
+    minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
+    seconds = seconds.toString().length === 1 ? '0' + seconds : seconds;
+    return minutes + ':' + seconds;
+  };
+
   return (
     <Box
       width='43vw'
@@ -79,7 +100,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        25:00
+        {format(time)}
       </Box>
       <Box
         marginTop='20px'
