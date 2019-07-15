@@ -14,7 +14,11 @@ const ToDoList = () => {
     addTodo,
     showActTodos,
     setShowActTodos,
+    showComTodos,
+    setShowComTodos,
   } = useContext(ContextProvider);
+
+  console.log(todos);
 
   return (
     <Box
@@ -23,7 +27,6 @@ const ToDoList = () => {
       display='flex'
       justifyContent='space-around'
       alignItems='flex-start'
-      border='1px solid red'
     >
       <StyledTodoList
         width='47vw'
@@ -58,7 +61,7 @@ const ToDoList = () => {
           width='45vw'
           display='flex'
           flexDirection='column'
-          border='1px solid red'
+          // border='1px solid red'
         >
           <Box
             width='45vw'
@@ -69,23 +72,72 @@ const ToDoList = () => {
             justifyContent='space-between'
             alignItems='center'
           >
-            <Box marginLeft='30px' fontSize='26px'>
+            <Box marginLeft='30px' fontSize='28px'>
               To-Do
             </Box>
-            <ArrowDown
+
+            <Box
               onClick={() => setShowActTodos(!showActTodos)}
               marginRight='30px'
-            />
+            >
+              {showActTodos &&
+              todos.filter(todo => todo.completed === false).length > 0 ? (
+                <ArrowDown />
+              ) : (
+                <ArrowUp />
+              )}
+            </Box>
           </Box>
+
           {showActTodos &&
-            todos.map(todo => (
-              <Todos
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                completed={todo.completed}
-              />
-            ))}
+            todos
+              .filter(todo => todo.completed === false)
+              .map(todo => (
+                <Todos
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  completed={todo.completed}
+                />
+              ))}
+
+          <Box
+            marginTop='30px'
+            width='45vw'
+            height='35px'
+            bgcolor='black'
+            color='white'
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <Box marginLeft='30px' fontSize='26px'>
+              DONE
+            </Box>
+            <Box
+              onClick={() => setShowComTodos(!showComTodos)}
+              marginRight='30px'
+            >
+              {showComTodos &&
+              todos.filter(todo => todo.completed === true).length > 0 ? (
+                <ArrowDown />
+              ) : (
+                <ArrowUp />
+              )}
+            </Box>
+          </Box>
+
+          {showComTodos &&
+            todos
+              .filter(todo => todo.completed === true)
+              .map(todo => (
+                <Todos
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  completed={todo.completed}
+                />
+              ))}
         </Box>
       </StyledTodoList>
     </Box>
@@ -129,6 +181,17 @@ const ArrowDown = styled(Box)`
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid ${props => props.theme.colors.white};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ArrowUp = styled(Box)`
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid ${props => props.theme.colors.white};
   &:hover {
     cursor: pointer;
   }

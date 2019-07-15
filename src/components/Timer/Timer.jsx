@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
+import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
+  const { isPlay, setIsPlay, playTodo } = useContext(ContextProvider);
   return (
     <Box
       width='43vw'
@@ -35,9 +37,34 @@ const Timer = () => {
           alignItems='center'
           border='8px solid black'
         >
-          <Box color='white' fontSize='50px' margin='10px'>
-            <i className='fas fa-play' />
-          </Box>
+          {isPlay ? (
+            <Box
+              width='180px'
+              height='180px'
+              borderRadius='50%'
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              bgcolor='white'
+            >
+              <StopButton
+                fontSize='50px'
+                margin='10px'
+                onClick={() => setIsPlay(!isPlay)}
+              >
+                <i className='fas fa-stop' />
+              </StopButton>
+            </Box>
+          ) : (
+            <PlayButton
+              color='white'
+              fontSize='50px'
+              margin='10px'
+              onClick={() => setIsPlay(!isPlay)}
+            >
+              <i className='fas fa-play' />
+            </PlayButton>
+          )}
         </BgOrange>
       </BgRed>
 
@@ -63,7 +90,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        The first thing to do...
+        {playTodo}
       </Box>
     </Box>
   );
@@ -75,6 +102,19 @@ const BgRed = styled(Box)`
 
 const BgOrange = styled(Box)`
   background: ${props => props.theme.colors.orange};
+`;
+
+const PlayButton = styled(Box)`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StopButton = styled(Box)`
+  color: ${props => props.theme.colors.orange};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default Timer;

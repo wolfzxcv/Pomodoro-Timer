@@ -6,7 +6,7 @@ const gray = '#6A6868';
 
 export default {
   breakpoints: ['768px', '1024px', '1200px'],
-  fontSizes: [12, 14, 16, 18, 24, 30, 40],
+  fontSizes: [18, 40],
   colors: {
     orange,
     red,

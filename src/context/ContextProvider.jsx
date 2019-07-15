@@ -5,10 +5,13 @@ export const ContextProvider = createContext();
 
 // eslint-disable-next-line
 export default props => {
+  const [isPlay, setIsPlay] = useState(false);
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
-  const [showActTodos, setShowActTodos] = useState(false);
+  const [showActTodos, setShowActTodos] = useState(true);
+  const [showComTodos, setShowComTodos] = useState(true);
+  const [playTodo, setPlayTodo] = useState(`Let's work!`);
 
   const addTodo = e => {
     e.preventDefault();
@@ -22,7 +25,27 @@ export default props => {
     }
   };
 
+  const toggleCompleted = id => {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updateTodos);
+  };
+
+  const showToDoTitle = id => {
+    if (!todos.find(todo => todo.id === id).completed) {
+      setPlayTodo(todos.find(todo => todo.id === id).title);
+    } else {
+      return false;
+    }
+  };
+
   const value = {
+    isPlay,
+    setIsPlay,
     input,
     setInput,
     isError,
@@ -31,8 +54,14 @@ export default props => {
     setTodos,
     showActTodos,
     setShowActTodos,
+    showComTodos,
+    setShowComTodos,
+    playTodo,
+    setPlayTodo,
 
     addTodo,
+    toggleCompleted,
+    showToDoTitle,
   };
 
   return <ContextProvider.Provider value={value} {...props} />;
