@@ -5,7 +5,7 @@ import icon from '../../asset/pomodoro.svg';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
-  const { isPlay, setIsPlay } = useContext(ContextProvider);
+  const { isPlay, setIsPlay, playTodo } = useContext(ContextProvider);
   return (
     <Box
       width='43vw'
@@ -38,15 +38,6 @@ const Timer = () => {
           border='8px solid black'
         >
           {isPlay ? (
-            <PlayButton
-              color='white'
-              fontSize='50px'
-              margin='10px'
-              onClick={() => setIsPlay(!isPlay)}
-            >
-              <i className='fas fa-play' />
-            </PlayButton>
-          ) : (
             <Box
               width='180px'
               height='180px'
@@ -64,6 +55,15 @@ const Timer = () => {
                 <i className='fas fa-stop' />
               </StopButton>
             </Box>
+          ) : (
+            <PlayButton
+              color='white'
+              fontSize='50px'
+              margin='10px'
+              onClick={() => setIsPlay(!isPlay)}
+            >
+              <i className='fas fa-play' />
+            </PlayButton>
           )}
         </BgOrange>
       </BgRed>
@@ -90,7 +90,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        The first thing to do...
+        {playTodo}
       </Box>
     </Box>
   );

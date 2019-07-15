@@ -11,6 +11,7 @@ export default props => {
   const [isError, setIsError] = useState(false);
   const [showActTodos, setShowActTodos] = useState(true);
   const [showComTodos, setShowComTodos] = useState(true);
+  const [playTodo, setPlayTodo] = useState(`Let's work!`);
 
   const addTodo = e => {
     e.preventDefault();
@@ -34,6 +35,14 @@ export default props => {
     setTodos(updateTodos);
   };
 
+  const showToDoTitle = id => {
+    if (!todos.find(todo => todo.id === id).completed) {
+      setPlayTodo(todos.find(todo => todo.id === id).title);
+    } else {
+      return false;
+    }
+  };
+
   const value = {
     isPlay,
     setIsPlay,
@@ -47,9 +56,12 @@ export default props => {
     setShowActTodos,
     showComTodos,
     setShowComTodos,
+    playTodo,
+    setPlayTodo,
 
     addTodo,
     toggleCompleted,
+    showToDoTitle,
   };
 
   return <ContextProvider.Provider value={value} {...props} />;

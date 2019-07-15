@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const Todos = ({ id, title, completed }) => {
-  const { toggleCompleted } = useContext(ContextProvider);
+  const { toggleCompleted, showToDoTitle } = useContext(ContextProvider);
 
   return (
     <StyledTodos
@@ -26,7 +26,11 @@ const Todos = ({ id, title, completed }) => {
         </Box>
         {completed ? <LineThrough>{title}</LineThrough> : <Box>{title}</Box>}
       </Box>
-      <Box paddingRight='30px' fontSize='28px'>
+      <Box
+        paddingRight='30px'
+        fontSize='28px'
+        onClick={() => showToDoTitle(id)}
+      >
         <i className='far fa-play-circle' />
       </Box>
     </StyledTodos>
