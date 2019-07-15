@@ -5,6 +5,7 @@ export const ContextProvider = createContext();
 
 // eslint-disable-next-line
 export default props => {
+  const [isPlay, setIsPlay] = useState(false);
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
@@ -34,6 +35,8 @@ export default props => {
   };
 
   const value = {
+    isPlay,
+    setIsPlay,
     input,
     setInput,
     isError,

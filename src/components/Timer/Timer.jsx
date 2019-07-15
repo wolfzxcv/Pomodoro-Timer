@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
+import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
+  const { isPlay, setIsPlay } = useContext(ContextProvider);
   return (
     <Box
       width='43vw'
@@ -35,9 +37,34 @@ const Timer = () => {
           alignItems='center'
           border='8px solid black'
         >
-          <PlayButton color='white' fontSize='50px' margin='10px'>
-            <i className='fas fa-play' />
-          </PlayButton>
+          {isPlay ? (
+            <PlayButton
+              color='white'
+              fontSize='50px'
+              margin='10px'
+              onClick={() => setIsPlay(!isPlay)}
+            >
+              <i className='fas fa-play' />
+            </PlayButton>
+          ) : (
+            <Box
+              width='180px'
+              height='180px'
+              borderRadius='50%'
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              bgcolor='white'
+            >
+              <StopButton
+                fontSize='50px'
+                margin='10px'
+                onClick={() => setIsPlay(!isPlay)}
+              >
+                <i className='fas fa-stop' />
+              </StopButton>
+            </Box>
+          )}
         </BgOrange>
       </BgRed>
 
@@ -78,6 +105,13 @@ const BgOrange = styled(Box)`
 `;
 
 const PlayButton = styled(Box)`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StopButton = styled(Box)`
+  color: ${props => props.theme.colors.orange};
   &:hover {
     cursor: pointer;
   }
