@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/Pomodoro-Timer/static/js/main.84017b12.chunk.js",
-    "main.js.map": "/Pomodoro-Timer/static/js/main.84017b12.chunk.js.map",
-    "runtime~main.js": "/Pomodoro-Timer/static/js/runtime~main.95a5b22f.js",
-    "runtime~main.js.map": "/Pomodoro-Timer/static/js/runtime~main.95a5b22f.js.map",
+    "main.js": "/Pomodoro-Timer/static/js/main.cf62f67b.chunk.js",
+    "main.js.map": "/Pomodoro-Timer/static/js/main.cf62f67b.chunk.js.map",
+    "runtime~main.js": "/Pomodoro-Timer/static/js/runtime~main.60bb22ec.js",
+    "runtime~main.js.map": "/Pomodoro-Timer/static/js/runtime~main.60bb22ec.js.map",
     "static/js/2.242ebced.chunk.js": "/Pomodoro-Timer/static/js/2.242ebced.chunk.js",
     "static/js/2.242ebced.chunk.js.map": "/Pomodoro-Timer/static/js/2.242ebced.chunk.js.map",
     "static/js/3.b3c126c8.chunk.js": "/Pomodoro-Timer/static/js/3.b3c126c8.chunk.js",
@@ -12,12 +12,12 @@
     "static/js/4.178f151d.chunk.js.map": "/Pomodoro-Timer/static/js/4.178f151d.chunk.js.map",
     "static/js/5.f7de3033.chunk.js": "/Pomodoro-Timer/static/js/5.f7de3033.chunk.js",
     "static/js/5.f7de3033.chunk.js.map": "/Pomodoro-Timer/static/js/5.f7de3033.chunk.js.map",
-    "static/js/6.b2deec00.chunk.js": "/Pomodoro-Timer/static/js/6.b2deec00.chunk.js",
-    "static/js/6.b2deec00.chunk.js.map": "/Pomodoro-Timer/static/js/6.b2deec00.chunk.js.map",
+    "static/js/6.ca59fd10.chunk.js": "/Pomodoro-Timer/static/js/6.ca59fd10.chunk.js",
+    "static/js/6.ca59fd10.chunk.js.map": "/Pomodoro-Timer/static/js/6.ca59fd10.chunk.js.map",
     "static/js/7.084a37ad.chunk.js": "/Pomodoro-Timer/static/js/7.084a37ad.chunk.js",
     "static/js/7.084a37ad.chunk.js.map": "/Pomodoro-Timer/static/js/7.084a37ad.chunk.js.map",
     "index.html": "/Pomodoro-Timer/index.html",
-    "precache-manifest.744137cebba442deef58915633bc5054.js": "/Pomodoro-Timer/precache-manifest.744137cebba442deef58915633bc5054.js",
+    "precache-manifest.d17dd59478eba597d71029563cb43705.js": "/Pomodoro-Timer/precache-manifest.d17dd59478eba597d71029563cb43705.js",
     "service-worker.js": "/Pomodoro-Timer/service-worker.js",
     "static/media/pomodoro.svg": "/Pomodoro-Timer/static/media/pomodoro.a11bce7d.svg"
   }
