@@ -43,19 +43,7 @@ export default props => {
 
   const showToDoTitle = id => {
     if (!todos.find(todo => todo.id === id).completed) {
-      setTime(1500);
       setPlayTodo(todos.find(todo => todo.id === id));
-      setIsPlay(true);
-    } else {
-      return false;
-    }
-  };
-
-  const playStopButton = id => {
-    if (
-      todos.filter(todo => todo.id.includes(playTodo.id))[0].id === id &&
-      todos.filter(todo => todo.id.includes(playTodo.id))[0].completed === false
-    ) {
       setIsPlay(!isPlay);
     } else {
       return false;
@@ -85,7 +73,6 @@ export default props => {
     addTodo,
     toggleCompleted,
     showToDoTitle,
-    playStopButton,
   };
 
   return <ContextProvider.Provider value={value} {...props} />;

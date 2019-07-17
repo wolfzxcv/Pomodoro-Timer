@@ -5,21 +5,9 @@ import icon from '../../asset/pomodoro.svg';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
-  const { time, setTime, isPlay, playTodo, playStopButton, todos } = useContext(
+  const { time, setTime, isPlay, playTodo, setIsPlay } = useContext(
     ContextProvider
   );
-
-  useEffect(() => {
-    let id;
-    if (isPlay) {
-      id = setInterval(() => {
-        setTime(prevTime => prevTime - 1);
-      }, 1000);
-    }
-    return () => {
-      if (id) clearInterval(id);
-    };
-  }, [isPlay]);
 
   const format = time => {
     if (time > 0) {
@@ -32,6 +20,19 @@ const Timer = () => {
       return '00:00';
     }
   };
+
+  useEffect(() => {
+    let id;
+    if (isPlay) {
+      id = setInterval(() => {
+        setTime(prevTime => prevTime - 1);
+        document.title = `(${format(time - 1)}) Pomodoro Timer`;
+      }, 1000);
+    }
+    return () => {
+      if (id) clearInterval(id);
+    };
+  }, [isPlay, format(time - 1)]);
 
   return (
     <Box
@@ -81,7 +82,7 @@ const Timer = () => {
                   if (playTodo.title === `Let's work!`) {
                     return false;
                   } else {
-                    playStopButton(playTodo.id);
+                    setIsPlay(!isPlay);
                   }
                 }}
               >
@@ -97,7 +98,7 @@ const Timer = () => {
                 if (playTodo.title === `Let's work!`) {
                   return false;
                 } else {
-                  playStopButton(playTodo.id);
+                  setIsPlay(!isPlay);
                 }
               }}
             >
