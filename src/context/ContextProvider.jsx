@@ -5,13 +5,19 @@ export const ContextProvider = createContext();
 
 // eslint-disable-next-line
 export default props => {
+  const [time, setTime] = useState(1500);
+  const [anaCounter, setAnaCounter] = useState([]);
   const [isPlay, setIsPlay] = useState(false);
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
   const [showActTodos, setShowActTodos] = useState(true);
   const [showComTodos, setShowComTodos] = useState(true);
-  const [playTodo, setPlayTodo] = useState(`Let's work!`);
+  const [playTodo, setPlayTodo] = useState({
+    id: '',
+    title: `Let's work!`,
+    completed: false,
+  });
 
   const addTodo = e => {
     e.preventDefault();
@@ -37,13 +43,18 @@ export default props => {
 
   const showToDoTitle = id => {
     if (!todos.find(todo => todo.id === id).completed) {
-      setPlayTodo(todos.find(todo => todo.id === id).title);
+      setPlayTodo(todos.find(todo => todo.id === id));
+      setIsPlay(!isPlay);
     } else {
       return false;
     }
   };
 
   const value = {
+    time,
+    setTime,
+    anaCounter,
+    setAnaCounter,
     isPlay,
     setIsPlay,
     input,

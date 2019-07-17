@@ -1,11 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
-  const { isPlay, setIsPlay, playTodo } = useContext(ContextProvider);
+  const { time, setTime, isPlay, playTodo, setIsPlay } = useContext(
+    ContextProvider
+  );
+
+  const format = time => {
+    if (time > 0) {
+      let seconds = time % 60;
+      let minutes = Math.floor(time / 60);
+      minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
+      seconds = seconds.toString().length === 1 ? '0' + seconds : seconds;
+      return minutes + ':' + seconds;
+    } else {
+      return '00:00';
+    }
+  };
+
+  useEffect(() => {
+    let id;
+    if (isPlay) {
+      id = setInterval(() => {
+        setTime(prevTime => prevTime - 1);
+        document.title = `(${format(time - 1)}) Pomodoro Timer`;
+      }, 1000);
+    }
+    return () => {
+      if (id) clearInterval(id);
+    };
+  }, [isPlay, format(time - 1)]);
+
   return (
     <Box
       width='43vw'
@@ -50,7 +78,13 @@ const Timer = () => {
               <StopButton
                 fontSize='50px'
                 margin='10px'
-                onClick={() => setIsPlay(!isPlay)}
+                onClick={() => {
+                  if (playTodo.title === `Let's work!`) {
+                    return false;
+                  } else {
+                    setIsPlay(!isPlay);
+                  }
+                }}
               >
                 <i className='fas fa-stop' />
               </StopButton>
@@ -60,7 +94,13 @@ const Timer = () => {
               color='white'
               fontSize='50px'
               margin='10px'
-              onClick={() => setIsPlay(!isPlay)}
+              onClick={() => {
+                if (playTodo.title === `Let's work!`) {
+                  return false;
+                } else {
+                  setIsPlay(!isPlay);
+                }
+              }}
             >
               <i className='fas fa-play' />
             </PlayButton>
@@ -79,7 +119,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        25:00
+        {format(time)}
       </Box>
       <Box
         marginTop='20px'
@@ -90,7 +130,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        {playTodo}
+        {playTodo.title}
       </Box>
     </Box>
   );
