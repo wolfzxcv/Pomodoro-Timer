@@ -55,12 +55,7 @@ const ToDoList = () => {
         <TextColor height='2rem'>
           {isError && 'please enter more than 3 characters'}
         </TextColor>
-        <Box
-          width='45vw'
-          display='flex'
-          flexDirection='column'
-          border='1px solid red'
-        >
+        <Box width='45vw' display='flex' flexDirection='column'>
           <Box
             width='45vw'
             height='35px'

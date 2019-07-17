@@ -43,7 +43,7 @@ export default props => {
 
   const showToDoTitle = id => {
     if (!todos.find(todo => todo.id === id).completed) {
-      setTime(10);
+      setTime(1500);
       setPlayTodo(todos.find(todo => todo.id === id));
       setIsPlay(true);
     } else {
