@@ -18,8 +18,6 @@ const ToDoList = () => {
     setShowComTodos,
   } = useContext(ContextProvider);
 
-  console.log(todos);
-
   return (
     <Box
       width='57vw'
@@ -61,7 +59,7 @@ const ToDoList = () => {
           width='45vw'
           display='flex'
           flexDirection='column'
-          // border='1px solid red'
+          border='1px solid red'
         >
           <Box
             width='45vw'

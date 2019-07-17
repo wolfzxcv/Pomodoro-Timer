@@ -1,21 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
 import { ContextProvider } from '../../context/ContextProvider';
 
 const Timer = () => {
-  const { isPlay, playTodo, playStopButton } = useContext(ContextProvider);
-
-  let init;
-  init = 300;
-  const [time, setTime] = useState(init);
+  const { time, setTime, isPlay, playTodo, playStopButton } = useContext(
+    ContextProvider
+  );
 
   useEffect(() => {
     let id;
     if (isPlay) {
       id = setInterval(() => {
-        setTime(time => time - 1);
+        setTime(prevTime => prevTime - 1);
       }, 1000);
     }
     return () => {
@@ -75,7 +73,7 @@ const Timer = () => {
               <StopButton
                 fontSize='50px'
                 margin='10px'
-                onClick={playStopButton}
+                onClick={() => playStopButton(playTodo.id)}
               >
                 <i className='fas fa-stop' />
               </StopButton>
@@ -85,7 +83,7 @@ const Timer = () => {
               color='white'
               fontSize='50px'
               margin='10px'
-              onClick={playStopButton}
+              onClick={() => playStopButton(playTodo.id)}
             >
               <i className='fas fa-play' />
             </PlayButton>
@@ -115,7 +113,7 @@ const Timer = () => {
         justifyContent='center'
         alignItems='center'
       >
-        {playTodo}
+        {playTodo.title}
       </Box>
     </Box>
   );
