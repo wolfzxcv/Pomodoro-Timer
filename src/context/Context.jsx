@@ -1,10 +1,9 @@
 import React, { useState, createContext } from 'react';
 import uuid from 'uuid';
 
-export const ContextProvider = createContext();
+export const Context = createContext();
 
-// eslint-disable-next-line
-export default props => {
+const ContextProvider = props => {
   const [time, setTime] = useState(1500);
   const [anaCounter, setAnaCounter] = useState([]);
   const [isPlay, setIsPlay] = useState(false);
@@ -18,6 +17,7 @@ export default props => {
     title: `Let's work!`,
     completed: false,
   });
+  const [ringtone, setRingtone] = useState('');
 
   const addTodo = e => {
     e.preventDefault();
@@ -50,6 +50,25 @@ export default props => {
     }
   };
 
+  const playAudio = () => {
+    const sound = new Audio(ringtone);
+    const playPromise = sound.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Automatic playback started!
+          // Show playing UI.
+          // console.log('audio played auto');
+        })
+        .catch(() => {
+          // Auto-play was prevented
+          // Show paused UI.
+          console.log('playback prevented');
+        });
+    }
+  };
+
   const value = {
     time,
     setTime,
@@ -67,13 +86,17 @@ export default props => {
     setShowActTodos,
     showComTodos,
     setShowComTodos,
+    ringtone,
+    setRingtone,
     playTodo,
     setPlayTodo,
-
     addTodo,
     toggleCompleted,
     showToDoTitle,
+    playAudio,
   };
 
-  return <ContextProvider.Provider value={value} {...props} />;
+  return <Context.Provider value={value} {...props} />;
 };
+
+export default ContextProvider;

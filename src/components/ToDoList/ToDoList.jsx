@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import InputBase from '@material-ui/core/InputBase';
 import Todos from './Todos';
-import { ContextProvider } from '../../context/ContextProvider';
+import { Context } from '../../context/Context';
 
 const ToDoList = () => {
   const {
@@ -16,7 +16,7 @@ const ToDoList = () => {
     setShowActTodos,
     showComTodos,
     setShowComTodos,
-  } = useContext(ContextProvider);
+  } = useContext(Context);
 
   return (
     <Box
