@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Loading from './Loading';
 
 const AppBar = lazy(() => import('../components/AppBar/AppBar'));
-const Ringtones = lazy(() => import('../components/Ringtones/Ringtones'));
+const Ringtone = lazy(() => import('../components/Ringtone/Ringtone'));
 const ToDoList = lazy(() => import('../components/ToDoList/ToDoList'));
 
 const Routes = () => (
@@ -14,7 +14,7 @@ const Routes = () => (
         <AppBar />
         <Switch>
           <Route exact path='/Pomodoro-Timer/' component={ToDoList} />
-          <Route path='/Pomodoro-Timer/ringtones' component={Ringtones} />
+          <Route path='/Pomodoro-Timer/ringtone' component={Ringtone} />
         </Switch>
       </Box>
     </Router>

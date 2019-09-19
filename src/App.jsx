@@ -3,7 +3,7 @@ import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import Box from '@material-ui/core/Box';
 import GlobalStyle from './theme/globalStyle';
-import ContextProvider from './context/ContextProvider';
+import ContextProvider from './context/Context';
 import theme from './theme/theme';
 import Timer from './components/Timer/Timer';
 import Routes from './layout/Routes';

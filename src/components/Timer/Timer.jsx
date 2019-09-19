@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Box from '@material-ui/core/Box';
 import icon from '../../asset/pomodoro.svg';
-import { ContextProvider } from '../../context/ContextProvider';
+import { Context } from '../../context/Context';
 
 const Timer = () => {
-  const { time, setTime, isPlay, playTodo, setIsPlay } = useContext(
-    ContextProvider
+  const { time, setTime, isPlay, playTodo, setIsPlay, playAudio } = useContext(
+    Context
   );
-
+  console.log(time);
   const format = time => {
     if (time > 0) {
       let seconds = time % 60;
@@ -16,6 +16,9 @@ const Timer = () => {
       minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
       seconds = seconds.toString().length === 1 ? '0' + seconds : seconds;
       return minutes + ':' + seconds;
+    } else if (time === 0) {
+      playAudio();
+      return '00:00';
     } else {
       return '00:00';
     }
@@ -108,19 +111,35 @@ const Timer = () => {
         </BgOrange>
       </BgRed>
 
-      <Box
-        marginTop='20px'
-        width='277px'
-        height='90px'
-        fontWeight='bold'
-        fontSize='90px'
-        color='white'
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-      >
-        {format(time)}
-      </Box>
+      {time >= 0 ? (
+        <Box
+          marginTop='20px'
+          width='277px'
+          height='90px'
+          fontWeight='bold'
+          fontSize='90px'
+          color='white'
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+        >
+          {format(time)}
+        </Box>
+      ) : (
+        <FlickeringTime
+          marginTop='20px'
+          width='277px'
+          height='90px'
+          fontWeight='bold'
+          fontSize='90px'
+          color='white'
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+        >
+          {format(time)}
+        </FlickeringTime>
+      )}
       <Box
         marginTop='20px'
         width='304px'
@@ -155,6 +174,16 @@ const StopButton = styled(Box)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const flicker = keyframes`
+   0%   { opacity:1; }
+   50%  { opacity:0; }
+   100% { opacity:1; }
+`;
+
+const FlickeringTime = styled(Box)`
+  animation: ${flicker} 1s linear infinite;
 `;
 
 export default Timer;

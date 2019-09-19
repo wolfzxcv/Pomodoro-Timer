@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
-import { ContextProvider } from '../../context/ContextProvider';
+import { Context } from '../../context/Context';
 
 const AppBar = () => {
-  const { setTime } = useContext(ContextProvider);
+  const { setTime } = useContext(Context);
   return (
     <Box
       paddingBottom='100px'
@@ -49,7 +49,7 @@ const AppBar = () => {
           <Box>BREAK TIME</Box>
         </StyledBox>
 
-        <Link to='/Pomodoro-Timer/ringtones'>
+        <Link to='/Pomodoro-Timer/ringtone'>
           <StyledBox
             fontSize='24px'
             fontWeight='bold'
@@ -59,7 +59,7 @@ const AppBar = () => {
             <Box marginRight='15px'>
               <i className='fas fa-music' />
             </Box>
-            <Box>RINGTONES</Box>
+            <Box>RINGTONE</Box>
           </StyledBox>
         </Link>
       </Box>

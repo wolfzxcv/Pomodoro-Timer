@@ -1,3 +1,7 @@
-npm i => npm start <br>
-demo https://wolfzxcv.github.io/Pomodoro-Timer/ <br> <br>
-Haven't finished alarm part
+To run this project
+
+1. Download or clone this project
+2. Run `npm install`
+3. Run `npm start`
+
+[demo](https://wolfzxcv.github.io/Pomodoro-Timer/)

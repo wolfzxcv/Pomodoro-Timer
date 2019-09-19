@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import { ContextProvider } from '../../context/ContextProvider';
+import { Context } from '../../context/Context';
 
 const Todos = ({ id, title, completed }) => {
-  const { toggleCompleted, showToDoTitle } = useContext(ContextProvider);
+  const { toggleCompleted, showToDoTitle } = useContext(Context);
 
   return (
     <StyledTodos
